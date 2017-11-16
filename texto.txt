@@ -2,20 +2,22 @@ PROJETO ROCK IN RIO
 
 O projeto sugere a criação de um sistema para controlar o funcionameto de diversas
 apresentações participantes do festival. O banco de dados deve conter, informações sobre as bandas que
-participaram de uma determinada edição do festival que ocorreu no Brasil).
+participaram de uma determinada edição do festival (que ocorreu no Brasil).
 
 O festival é composto por vários palcos, assim, serão armazenadas informações sobre os mesmos. Deve-
-se controlar o horário e a duração de inicio de fim da apresentação de cada banda, e se a mesma foi ou
-
-não ao show.
+se controlar o horário e a duração de inicio de fim da apresentação de cada banda, e se a mesma foi ou não ao show.
 Devido a grandeza do festival, há vários funcionários trabalhando nos palcos, o que nos leva a
 necessidade de controlar qual funcionário trabalhou em um determinado setor do festival em uma
 determinada data, pois o festival acontece em vários dias.
 	1. Cada funcionário terá um nome, sexo e CPF. O empregado pode ser um Gerente de palco, Montador de palco ou auxiliar de limpeza.
-	2. Nos palcos, tocam várias bandas em determinado horário, qual era o gerente responsável pelo palco, quais funcionários estavam trabalhando em quais palcos durante o festival em determinado dia e hora.
+	2. Nos palcos, tocam várias bandas em determinado horário, e contém um gerente responsável pelo palco, os funcionários trabalhando nos palcos durante o festival em determinado dia e hora.
 	3. Cada edição do festival terá as bandas que tocaram, o número de dias do festival, o ano, o número
 de pessoas, arrecadação total
 	4. Deve-se controlar as apresentações das bandas em determinados palcos, bem como o horário e o
 fim da apresentação.
-	5. As apresentações conterão os equipamentos utilizandos no momento da apresentação, dia do show
-	6. As bandas tocam nos palcos
+	5. As apresentações conterão os equipamentos utilizandos no momento da apresentação, dia do show. Se não houver uma banda, não haverá uma apresentação
+	6. As bandas tocam nos palcos, elas tem um nome, os integrantes e uma id e usam determinados equipamentos
+	7. Os Hotéis do evento hospedarão as bandas que apresentarão no festival
+	8. Os ônibus do evento farão todas as viagens necessárias para locomoção terrestre da banda
+	9. As edições produzirão as mídias que terão um tipo, um nome e um codigo
+       10. Os patrocinadores patrocinam as edições tendo um nome fantasia, um codigo e valor do patrocínio.
