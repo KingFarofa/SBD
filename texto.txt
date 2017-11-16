@@ -18,6 +18,6 @@ fim da apresentação.
 	5. As apresentações conterão os equipamentos utilizandos no momento da apresentação, dia do show. Se não houver uma banda, não haverá uma apresentação
 	6. As bandas tocam nos palcos, elas tem um nome, os integrantes e uma id e usam determinados equipamentos
 	7. Os Hotéis do evento hospedarão as bandas que apresentarão no festival
-	8. Os ônibus do evento farão todas as viagens necessárias para locomoção terrestre da banda
-	9. As edições produzirão as mídias que terão um tipo, um nome e um codigo
-       10. Os patrocinadores patrocinam as edições tendo um nome fantasia, um codigo e valor do patrocínio.
+	8. As edições produzirão as mídias que terão um tipo, um nome e um codigo
+       9. Os patrocinadores patrocinam as edições tendo um nome fantasia, um codigo e valor do patrocínio.
+       
