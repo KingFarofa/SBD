@@ -1,21 +1,13 @@
-PROJETO ROCK IN RIO
-
-O projeto sugere a criação de um sistema para controlar o funcionameto de diversas
-apresentações participantes do festival. O banco de dados deve conter, informações sobre as bandas que
-participaram de uma determinada edição do festival que ocorreu no Brasil).
-
-O festival é composto por vários palcos, assim, serão armazenadas informações sobre os mesmos. Deve-
-se controlar o horário e a duração de inicio de fim da apresentação de cada banda, e se a mesma foi ou
-
-não ao show.
-Devido a grandeza do festival, há vários funcionários trabalhando nos palcos, o que nos leva a
-necessidade de controlar qual funcionário trabalhou em um determinado setor do festival em uma
-determinada data, pois o festival acontece em vários dias.
-	1. Cada funcionário terá um nome, sexo e CPF. O empregado pode ser um Gerente de palco, Montador de palco ou auxiliar de limpeza.
-	2. Nos palcos, tocam várias bandas em determinado horário, qual era o gerente responsável pelo palco, quais funcionários estavam trabalhando em quais palcos durante o festival em determinado dia e hora.
-	3. Cada edição do festival terá as bandas que tocaram, o número de dias do festival, o ano, o número
-de pessoas, arrecadação total
-	4. Deve-se controlar as apresentações das bandas em determinados palcos, bem como o horário e o
-fim da apresentação.
-	5. As apresentações conterão os equipamentos utilizandos no momento da apresentação, dia do show
-	6. As bandas tocam nos palcos
+No Rock in Rio a apresentação ocorre em um palco com nome e codigo sendo um codigo unico, a banda que toca nesse palco tambem te um nome e genero sendo que bandas
+de mesmo genero nao devem possuir nomes iguais.
+Toda apresentação tem hora de inicio e uma data visto que o Rock in Rio ocorre em mais de um dia.
+No palco trabalham varios funcionarios eles possuem nome , cpf e sexo sendo eles o gerente de palco , auxiliar de limpeza e assistente de palco e nenhum deles devem fazer a 
+função de outro mas um funcionario desses pode trabalhar em varios palcos.
+A apresentação utiliza muitos equipamentos cada um com um nome distinto e esses equipamentos podem ser usados de outras apresentações.
+A banda se hospeda em um hotel com um nome exclusivo, e os artistas que tocam na apresentação tem nomes unicos sendo que um artista pode tocar em mais de uma
+apresentação.O artista toca um instrumento que tem um tipo e nome , sendo esse nome unico.
+Essa apresentações são realizadas em uma edição do festival, sendo que em uma edição realizada  acontecem varias apresentações.Em cada edição temos o codigo do patrocinador
+o seu numero , ano de edição , arrecadação ,numero de pessoas e dias.
+Como o Rock in Rio é um evento popular cada edição do festival produz midias com tipos e nomes sendo que eles tem são distinto entre si.
+O patrocinador doa um valor para o Rock in Rio usando seu nome fantasia, porem esse nome pode ser repetido então para diferenciar os patrocinadores são distribuido códigos
+exclusivos entre eles.
