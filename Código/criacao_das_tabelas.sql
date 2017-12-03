@@ -122,17 +122,31 @@ CREATE TABLE Realizada_em(
 
 CREATE TABLE Utiliza(
 	data_ap (apresentacao.data),
-	equipamento (equipamento.nome)
+	equipamento (equipamento.nome),
+	CONSTRAINT utiliza_pk 	PRIMARY KEY (data_ap),
+	CONSTRAINT utiliza_pk1	PRIMARY KEY (equipamento),
+	CONSTRAINT utiliza_fk	FOREIGN KEY (data_ap) 		REFERENCES Apresentacao(data), --isso aki ta errado
+	CONSTRAINT utiliza_fk1	FOREIGN KEY (equipamento) 	REFERENCES Equipamento(nome)
+
 );
 
 CREATE TABLE Toca_em(
-	artista (artista.nome),
-	banda(banda.cod)
+	artista 		varchar(40),
+	banda			integer,
+	CONSTRAINT toca_em_pk 	PRIMARY KEY (artista),
+	CONSTRAINT toca_em_pk1	PRIMARY KEY (banda),
+	CONSTRAINT toca_em_fk	FOREIGN KEY (artista) 	REFERENCES Artista(nome),
+	CONSTRAINT toca_em_fk1	FOREIGN KEY (banda) 	REFERENCES Banda(cod)
+	
 );
 
 CREATE TABLE Toca (
 	artista(artista.nome),
-	insts (instrumento.cod)
+	insts (instrumento.cod),
+	CONSTRAINT toca_pk 	PRIMARY KEY (artista),
+	CONSTRAINT toca_pk1	PRIMARY KEY (insts),
+	CONSTRAINT toca_fk	FOREIGN KEY (artista) 	REFERENCES Artista(nome),
+	CONSTRAINT toca_fk1	FOREIGN KEY (insts) 	REFERENCES instrumento(cod)
 );
 
 CREATE TABLE Apresenta (
@@ -150,11 +164,18 @@ CREATE TABLE Funcionario(
 	nome					varchar(40),
 	sexo					char,
 	funcao					varchar(120),
-	palco(Palco.cod)		integer,
+	palco					integer,
+	CONSTRAINT funcionario_fk 	FOREIGN KEY (palco) REFERENCES palco(cod)
+	CONSTRAINT funcionario_pk	PRIMARY KEY (cpf),
+	CONSTRAINT funcionario_pk1	PRIMARY KEY (palco)
 );
 
 
 CREATE TABLE Trabalha(
 	palco(Palco.cod),
 	cpf (Funcionario.cpf)
+	CONSTRAINT trabalha_pk 	PRIMARY KEY (palco),
+	CONSTRAINT trabalha_pk1 PRIMARY KEY (cpf),
+	CONSTRAINT trabalha_fk 	FOREIGN KEY (palco) REFERENCES palco(cod),
+	CONSTRAINT trabalha_fk 	FOREIGN KEY (cpf) REFERENCES funcionario(cpf)
 );
