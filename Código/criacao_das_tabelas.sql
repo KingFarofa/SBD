@@ -1,32 +1,34 @@
 ﻿--Modelo Relacional
-
+DROP SCHEMA Palcos CASCADE;
+CREATE SCHEMA Palcos;
+SET search_path to Palcos;
 
 CREATE TABLE Patrocinador(
-	cod						,
+	cod						serial,
 	nome					varchar(40),
-	contribuicao
+	contribuicao			money CHECK (contribuicao > 0)
 );
 
 CREATE TABLE Edição(
-	numero					,
-	arrecadacao				,
-	ano						,
-	n_pessoas
+	numero					serial,
+	arrecadacao				money,
+	ano						numeric(4,0) CHECK (ano > 0),
+	n_pessoas				int CHECK (n_pessoas > 0)
 );
 
 CREATE TABLE Equipamento(
 	nome					varchar(40),
-	tipo					varchar(20)
+	tipo					varchar(20)--colocar o check dos tipos de equipamentos
 );
 CREATE TABLE Midia(
 	nome					varchar(40),
-	tipo					
+	tipo					varchar(10) check(tipo = 'DVD' OR tipo = 'CD'/*se tiver mais alguma coisa coloca kk*/)
 );
 
 CREATE TABLE Instrumento(
 	cod,
 	nome_instrumento		varchar(40),
-	tipo					--achar um jeito de limitar o dominio
+	tipo					--lmitar o dominio com check
 );
 
 CREATE TABLE Artista(
