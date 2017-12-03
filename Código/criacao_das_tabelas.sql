@@ -2,81 +2,92 @@
 
 
 CREATE TABLE Patrocinador(
-	cod,
-	nome,
+	cod						,
+	nome					varchar(40),
 	contribuicao
 );
 
 CREATE TABLE Edição(
-	numero,
-	arrecadacao,
-	ano,
+	numero					,
+	arrecadacao				,
+	ano						,
 	n_pessoas
 );
 
 CREATE TABLE Equipamento(
-	nome,
-	tipo
+	nome					varchar(40),
+	tipo					varchar(20)
 );
 CREATE TABLE Midia(
-	nome,
-	tipo
+	nome					varchar(40),
+	tipo					
 );
 
 CREATE TABLE Instrumento(
 	cod,
-	nome_instrumento,
-	tipo
+	nome_instrumento		varchar(40),
+	tipo					--achar um jeito de limitar o dominio
 );
 
 CREATE TABLE Artista(
-	nome,
-	nacionalidade);
+	nome					varchar(40),
+	nacionalidade			varchar(20)
+);
 
 CREATE TABLE Hotel (
-	nome,
-	endereço,
-	telefone,
-	cod_banda (Banda.cod)
+	nome					varchar(40),
+	endereço				,
+	telefone				,
+	cod_banda (Banda.cod)	
 );
 
 CREATE TABLE Banda(
-	cod,
-	nome,
-	gênero
+	cod						,
+	nome					varchar(40),
+	gênero					--limitar o dominio
 );
 
 CREATE TABLE Apresentacao(
-	apresentador(Banda.cod),
-	cod_palco (Palco.cod),
-	data,
-	hora_inicio,
-	hora_fim);
+	apresentador(Banda.cod)	,
+	cod_palco (Palco.cod)	,
+	inicio					timestramp,
+	fim						timestramp
+);
 
 CREATE TABLE Palco(
-	nome_palco,
-	cod,
-	Responsavel(Funcionario.cpf)
+	nome_palco				varchar(40),
+	cod						,
+	Responsavel				,
+	CONSTRAINT fk_palco FOREIGN KEY responsabel REFERENCES funcionario(cpf)
 );
 
 CREATE TABLE Patrocina(
-	patroc (Patrocinador.cod),
-	edicao (edicao.numero)
+	patroc					,
+	edicao					,
+	CONSTRAINT fk_patrocinador FOREIGN KEY patroc REFERENCES patrocinador(cod),
+	CONSTRAINT fk_edicao FOREIGN KEY edicao REFERENCES edicao(numero)
 );
 
 CREATE TABLE Produz (
-	midia (Midia.nome),
-	tipo(Midia.tipo),
-	num_ed(edicao.Numero)
+	midia					,
+	tipo					,
+	num_ed					,
+	CONSTRAINT fk_edicao FOREIGN KEY num_ed REFERENCES edicao(numero),
+	CONSTRAINT fk_tmidia FOREIGN KEY tipo REFERENCES midia(tipo),
+	CONSTRAINT fk_nmidia FOREIGN KEY midia REFERENCES nidia(nome)
 );
 
 CREATE TABLE Realizada_em(
 	ed (edicao.num_edicao),
 	apresentador(Apresentacao.apresentador), 
 	palco (Apresentacao.Cod_palco),
-	Data(apresentacao.data),
 	inicio(apresentacao.hora_inicio),
 	fim(apresentacao.hora_fim)
+	CONSTRAINT fk_edicao 	FOREIGN KEY ed REFERENCES edicao(numero),
+	CONSTRAINT fk_presenter FOREIGN KEY apresentador REFERENCES apresentacao(apresentador),
+	CONSTRAINT fk_palco 	FOREIGN KEY palco REFERENCES apresentacao(cod_palco)
+	CONSTRAINT fk_edicao 	FOREIGN KEY
+	CONSTRAINT fk_edicao 	FOREIGN KEY
 );
 
 CREATE TABLE Utiliza(
