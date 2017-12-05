@@ -1,17 +1,18 @@
 ---Modelo Relacional
+DROP SCHEMA Palcos CASCADE;
 CREATE SCHEMA Palcos;
 SET search_path to Palcos;
 
 CREATE TABLE Patrocinador(
 	cod					integer,
 	nome					varchar(40),
-	contribuicao				numeric(10,2) CHECK (contribuicao > 0),
+	contribuicao				money CHECK (contribuicao > 0),
 	CONSTRAINT patrocinador_pk PRIMARY KEY (cod)
 );
 
 CREATE TABLE Edição(
 	numero					serial,
-	arrecadacao				numeric(20,2),
+	arrecadacao				money,
 	ano					numeric(4,0) CHECK (ano > 0),
 	n_pessoas				int CHECK (n_pessoas > 0),
 	CONSTRAINT edicao_pk PRIMARY KEY (numero)
@@ -52,6 +53,15 @@ CREATE TABLE Artista(
 	CONSTRAINT artista_pk PRIMARY KEY (nome)
 );
 
+CREATE TABLE Hotel (
+	nome					varchar(40),
+	endereço				varchar(120),
+	telefone				varchar(15),
+	cod_banda 				integer,
+	CONSTRAINT hotel_fk FOREIGN KEY (cod_banda) REFERENCES Banda(cod),
+	CONSTRAINT hotel_pk PRIMARY KEY (cod_banda,telefone)
+);
+
 CREATE TABLE Banda(
 	cod					integer,
 	nome					varchar(40),
@@ -67,34 +77,6 @@ CREATE TABLE Banda(
 	CONSTRAINT banda_pk PRIMARY KEY (cod)
 );
 
-
-CREATE TABLE Hotel (
-	nome					varchar(40),
-	endereço				varchar(120),
-	telefone				varchar(15),
-	cod_banda 				integer,
-	CONSTRAINT hotel_fk FOREIGN KEY (cod_banda) REFERENCES Banda(cod),
-	CONSTRAINT hotel_pk PRIMARY KEY (cod_banda,telefone)
-);
-
-CREATE TABLE Funcionario(
-	cpf				varchar(11),
-	nome				varchar(40),
-	sexo				char,
-	funcao				varchar(120),
-	palco				integer,
-	CONSTRAINT funcionario_pk	PRIMARY KEY (cpf,palco)
-);
-
-CREATE TABLE Palco(
-	nome_palco				varchar(40),
-	cod					integer,
-	responsavel				varchar(11),
-	CONSTRAINT fk_palco FOREIGN KEY (responsavel) REFERENCES funcionario(cpf),
-	CONSTRAINT pk_palco PRIMARY KEY (cod,responsavel)
-);
-ALTER TABLE Funcionario ADD CONSTRAINT funcionario_fk FOREIGN KEY (palco) REFERENCES palco(cod);
-
 CREATE TABLE Apresentacao(
 	apresentador				integer,
 	cod_palco 				integer,
@@ -107,12 +89,19 @@ CREATE TABLE Apresentacao(
 
 );
 
+CREATE TABLE Palco(
+	nome_palco				varchar(40),
+	cod					integer,
+	responsavel				varchar(11),
+	CONSTRAINT fk_palco FOREIGN KEY (responsavel) REFERENCES funcionario(cpf),
+	CONSTRAINT pk_palco PRIMARY KEY (cod,responsavel)
+);
 
 CREATE TABLE Patrocina(
 	patroc					integer,
 	edicao					integer,
-	CONSTRAINT fk_patr	 	FOREIGN KEY (patroc) REFERENCES patrocinador(cod),
-	CONSTRAINT fk_edicao		FOREIGN KEY (edicao) REFERENCES edicao(numero),
+	CONSTRAINT fk_patr	 	FOREIGN KEY patroc REFERENCES patrocinador(cod),
+	CONSTRAINT fk_edicao		FOREIGN KEY edicao REFERENCES edicao(numero),
 	CONSTRAINT pk_patrocina 	PRIMARY KEY (patroc,edicao)	
 );
 
@@ -120,12 +109,11 @@ CREATE TABLE Produz (
 	midia					varchar(40),
 	tipo					varchar(10),
 	num_ed					integer,
-	CONSTRAINT fk_edicao FOREIGN KEY (num_ed) REFERENCES edicao(numero),
-	CONSTRAINT fk_tmidia FOREIGN KEY (tipo) REFERENCES midia(tipo),
-	CONSTRAINT fk_nmidia FOREIGN KEY (midia) REFERENCES nidia(nome),
+	CONSTRAINT fk_edicao FOREIGN KEY num_ed REFERENCES edicao(numero),
+	CONSTRAINT fk_tmidia FOREIGN KEY tipo REFERENCES midia(tipo),
+	CONSTRAINT fk_nmidia FOREIGN KEY midia REFERENCES nidia(nome),
 	CONSTRAINT pk_produz PRIMARY KEY (midia,tipo,num_ed)
 );
-
 
 CREATE TABLE Realizada(
 	edi 					integer,
@@ -134,13 +122,13 @@ CREATE TABLE Realizada(
 	inicio					time,
 	fim					time,
 	dia					date,
-	CONSTRAINT fk_realiza 	FOREIGN KEY (ed) 				REFERENCES edicao(numero),
-	CONSTRAINT fk_realiza1 	FOREIGN KEY (apresentador) 		REFERENCES apresentacao(apresentador),
-	CONSTRAINT fk_realiza2 	FOREIGN KEY (palco) 			REFERENCES apresentacao(cod_palco),
-	CONSTRAINT fk_realiza3 	FOREIGN KEY (inicio) 			REFERENCES apresentacao(inicio),
-	CONSTRAINT fk_realiza4 	FOREIGN KEY (fim) 			REFERENCES apresentacao(fim),
-	CONSTRAINT fk_realiza5 	FOREIGN KEY (dia) 			REFERENCES apresentacao(dia),
-	CONSTRAINT pk_realiza  	PRIMARY KEY (edi,banda,apresentador, palco, inicio, fim,dia)
+	CONSTRAINT fk_realiza 	FOREIGN KEY ed 				REFERENCES edicao(numero),
+	CONSTRAINT fk_realiza1 	FOREIGN KEY apresentador 		REFERENCES apresentacao(apresentador),
+	CONSTRAINT fk_realiza2 	FOREIGN KEY palco 			REFERENCES apresentacao(cod_palco),
+	CONSTRAINT fk_realiza3 	FOREIGN KEY inicio 			REFERENCES apresentacao(inicio),
+	CONSTRAINT fk_realiza4 	FOREIGN KEY fim 			REFERENCES apresentacao(fim),
+	CONSTRAINT fk_realiza5 	FOREIGN KEY dia 			REFERENCES apresentacao(dia),
+	CONSTRAINT pk_realiza  (edi,banda,apresentador, palco, inicio, fim,dia)
 );
 
 CREATE TABLE Utiliza(
@@ -184,7 +172,7 @@ CREATE TABLE Apresenta (
 	CONSTRAINT toca_em_fk4	FOREIGN KEY (ap_palco) 		REFERENCES Apresentacao(cod_palco),
 	CONSTRAINT toca_em_fk5	FOREIGN KEY (dia) 		REFERENCES Apresentacao(dia),
 	CONSTRAINT toca_em_fk6	FOREIGN KEY (inicio) 		REFERENCES Apresentacao(hora_inicio),
-	CONSTRAINT toca_em_fk7	FOREIGN KEY (fim) 		REFERENCES Apresentacao(horafim)
+	CONSTRAINT toca_em_fk7	FOREIGN KEY (fim) 		REFERENCES Apresentacao(horafim),
 );
 
 CREATE TABLE Funcionario(
@@ -193,7 +181,7 @@ CREATE TABLE Funcionario(
 	sexo				char,
 	funcao				varchar(120),
 	palco				integer,
-	CONSTRAINT funcionario_fk 	FOREIGN KEY (palco) REFERENCES palco(cod),
+	CONSTRAINT funcionario_fk 	FOREIGN KEY (palco) REFERENCES palco(cod)
 	CONSTRAINT funcionario_pk	PRIMARY KEY (cpf),
 	CONSTRAINT funcionario_pk1	PRIMARY KEY (palco)
 );
