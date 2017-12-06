@@ -1,13 +1,10 @@
-No Rock in Rio a apresentação ocorre em um palco com nome e codigo sendo um codigo unico, a banda que toca nesse palco tambem te um nome e genero sendo que bandas
-de mesmo genero nao devem possuir nomes iguais.
-Toda apresentação tem hora de inicio e uma data visto que o Rock in Rio ocorre em mais de um dia.
+No Rock in Rio a apresentação ocorre em um palco com nome e codigo sendo um codigo unico, a banda que toca nesse palco tambem tem um nome e genero sendo que bandas de mesmo genero não devem possuir nomes iguais.
+Toda apresentação tem hora de inicio e uma hora de fim a fim de controlar que bandas não podem realizar uma apresentação em um palco antes durante o tempo de apresentação de outra banda.
 No palco trabalham varios funcionarios eles possuem nome , cpf e sexo sendo eles o gerente de palco , auxiliar de limpeza e assistente de palco e nenhum deles devem fazer a 
 função de outro mas um funcionario desses pode trabalhar em varios palcos.
-A apresentação utiliza muitos equipamentos cada um com um nome distinto e esses equipamentos podem ser usados de outras apresentações.
-A banda se hospeda em um hotel com um nome exclusivo, e os artistas que tocam na apresentação tem nomes unicos sendo que um artista pode tocar em mais de uma
-apresentação.O artista toca um instrumento que tem um tipo e nome , sendo esse nome unico.
-Essa apresentações são realizadas em uma edição do festival, sendo que em uma edição realizada  acontecem varias apresentações.Em cada edição temos o codigo do patrocinador
-o seu numero , ano de edição , arrecadação ,numero de pessoas e dias.
-Como o Rock in Rio é um evento popular cada edição do festival produz midias com tipos e nomes sendo que eles tem são distinto entre si.
-O patrocinador doa um valor para o Rock in Rio usando seu nome fantasia, porem esse nome pode ser repetido então para diferenciar os patrocinadores são distribuido códigos
-exclusivos entre eles.
+Cada banda utiliza muitos equipamentos em suas apresentações, cada um com seu nome e um numero de série, os mesmos equipamentos podem ser utilizados por outras bandas em outras apresentações.
+A banda se hospeda em um hotel com um nome exclusivo, e os artistas que tocam na apresentação tem nomes unicos sendo que um artista pode tocar em mais de uma apresentação.
+O artista toca um instrumento que tem um tipo, nome e um numero de série, sendo esse último, único para cada instrumento.
+Essas apresentações são realizadas em uma edição do festival, sendo que em uma edição realizada  acontecem varias apresentações.Em cada edição temos o codigo do patrocinador (visto que não pode haver uma edição do rock in rio sem patrocinador) o seu numero , ano de edição , arrecadação , numero de pessoas e dias.
+Como o Rock in Rio é um evento popular cada edição do festival produz midias com tipos e nomes sendo que eles são distintos entre si.
+O patrocinador doa um valor para o Rock in Rio usando seu nome fantasia, porem esse nome pode ser repetido então para diferenciar os patrocinadores são distribuido códigos exclusivos entre eles.
